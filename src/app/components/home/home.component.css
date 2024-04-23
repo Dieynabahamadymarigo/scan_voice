@@ -1,0 +1,15 @@
+.container{
+  margin:0 auto;
+}
+.card{
+  border: none;
+}
+.carte{
+  border: 2px solid var(--secondary-color);
+  background-color: var(--primary-color);
+  border-radius: var(--border-radius-medium);
+  margin:0 auto;
+}
+.carte i{
+  font-size: var(--h1-font-size);
+}

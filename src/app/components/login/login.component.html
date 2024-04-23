@@ -1,0 +1,195 @@
+<!--Sign up-->
+  <div class="card mb-3  container" *ngIf="inscripton">
+    <div class="border-top"></div>
+    <div class="row g-0 carte-connexion">
+
+      <h2 class="text-inscription">Bienvenue sur notre Page d’Inscription</h2>
+
+      <!-- <div class="col-md-5 image-login">
+        <img src="../../../assets/images/login.png" class="img-fluid " alt="...">
+      </div> -->
+
+      <div class="col-md-7" >
+        <div class="card-body">
+          <div class="champs-input">
+            <div class="champs-de-saisir">
+              <h5 class="card-title">Nom :</h5>
+            </div>
+            <div class="input">
+              <input type="text" placeholder="votre nom">
+            </div>
+          </div>
+
+          <div class="champs-input">
+            <div class="champs-de-saisir">
+              <h5 class="card-title">Prenom :</h5>
+            </div>
+            <div class="input">
+              <input type="text" placeholder="votre prenom">
+            </div>
+          </div>
+
+          <div class="champs-input">
+            <div class="champs-de-saisir">
+              <h5 class="card-title">Email :</h5>
+            </div>
+            <div class="input">
+              <input type="email" placeholder="exemple@gmail.com">
+            </div>
+          </div>
+
+          <div class="champs-input">
+            <div class="champs-de-saisir">
+              <h5 class="card-title">Password :</h5>
+            </div>
+            <div class="input">
+              <input type="password" placeholder="**********">
+            </div>
+          </div>
+
+          <div class="champs-input">
+            <div class="champs-de-saisir">
+              <h5 class="card-title">Téléphone :</h5>
+            </div>
+            <div class="input">
+              <input type="tel" placeholder="7* *** ** **">
+            </div>
+          </div>
+
+          <div class="champs-input">
+            <div class="champs-de-saisir">
+              <h5 class="card-title">Adresse :</h5>
+            </div>
+            <div class="input">
+              <input type="text" placeholder="votre address">
+            </div>
+          </div>
+
+          <div class="button-inscrire">
+            <button class="inscrire">S'inscrire</button>
+          </div>
+
+          <div class="text-inscrire">
+            <p class="text-question">Vous avez déjà un compte ?</p> <br>
+            <h5 class="text-connect" (click)="afficherFrmConnexion()">Connectez-vous</h5>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-md-5 image-login">
+        <img src="../../../assets/images/login.png" class="img-fluid " alt="...">
+      </div>
+
+    </div>
+  </div>
+
+<!-- login -->
+<div class="card mb-3  container" *ngIf="connexion">
+  <div class="border-top"></div>
+  <div class="row g-0 carte-connexion">
+
+    <h2 class="text-inscription">Bienvenue sur notre Page de Connexion</h2>
+
+    <!-- <div class="col-md-5 image-login">
+      <img src="../../../assets/images/login.png" class="img-fluid " alt="...">
+    </div> -->
+
+    <div class="col-md-7" >
+      <div class="card-body">
+
+        <div class="espace"></div>
+
+        <div class="champs-input">
+          <div class="champs-de-saisir">
+            <h5 class="card-title">Email :</h5>
+          </div>
+          <div class="input">
+            <input type="email" placeholder="exemple@gmail.com">
+          </div>
+        </div>
+
+        <div class="champs-input">
+          <div class="champs-de-saisir">
+            <h5 class="card-title">Password :</h5>
+          </div>
+          <div class="input">
+            <input type="password" placeholder="**********">
+            <p (click)="afficherFrmForgot()">Mot de passe oublié ?</p>
+          </div>
+        </div>
+
+        <div class="button-inscrire">
+          <button class="inscrire" routerLink="/home">Se connecter</button>
+        </div>
+
+        <div class="text-inscrire">
+          <p class="text-question">Vous n'avez pas de un compte ?</p> <br>
+          <h5 class="text-connect" (click)="afficherFrmInscription()">Inscrivez-vous</h5>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-md-5 image-login">
+      <img src="../../../assets/images/login.png" class="img-fluid " alt="...">
+    </div>
+
+  </div>
+</div>
+
+<!-- fotgot password -->
+<div class="card mb-3  container" *ngIf="forgot_password">
+  <div class="border-top"></div>
+  <div class="row g-0 carte-connexion">
+
+    <h2 class="text-inscription">Mot de passe oublié !</h2>
+
+    <!-- <div class="col-md-5 image-login">
+      <img src="../../../assets/images/login.png" class="img-fluid " alt="...">
+    </div> -->
+
+    <div class="col-md-7" >
+      <div class="card-body">
+
+        <div class="espace"></div>
+
+        <div class="champs-input">
+          <div class="champs-de-saisir">
+            <h5 class="card-title">Email :</h5>
+          </div>
+          <div class="input">
+            <input type="email" placeholder="exemple@gmail.com">
+          </div>
+        </div>
+
+        <div class="champs-input">
+          <div class="champs-de-saisir">
+            <h5 class="card-title">Password :</h5>
+          </div>
+          <div class="input">
+            <input type="password" placeholder="**********">
+            <p (click)="afficherFrmConnexion()">Connexion</p>
+          </div>
+        </div>
+
+        <div class="button-inscrire">
+          <button class="inscrire">Valider</button>
+        </div>
+
+        <!-- <div class="text-inscrire">
+          <p class="text-question">Vous n'avez pas de un compte ?</p> <br>
+          <h5 class="text-connect" (click)="afficherFrmForgot()">Inscrivez-vous</h5>
+        </div> -->
+
+      </div>
+
+    </div>
+
+    <div class="col-md-5 image-login">
+      <img src="../../../assets/images/Forgot.png" class="img-fluid " alt="...">
+    </div>
+
+  </div>
+</div>

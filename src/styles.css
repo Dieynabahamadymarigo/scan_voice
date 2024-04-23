@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --white-color:                  #ffffff;
+  --primary-color:                #E5F1FF;
+  --secondary-color:              #002A66;
+
+  --h1-font-size:                 74px;
+  --h2-font-size:                 46px;
+  --h2-font-size-tablette:        30px;
+  --h2-font-size-telephone:       25px;
+  --h3-font-size:                 32px;
+  --h4-font-size:                 28px;
+  --h5-font-size:                 24px;
+  --h6-font-size:                 22px;
+  --p-font-size:                  18px;
+  --menu-font-size:               14px;
+  --btn-font-size:                20px;
+  --copyright-font-size:          10px;
+
+  --border-radius-large:          100px;
+  --border-radius-medium:         20px;
+  --border-radius-small:          10px;
+
+  --font-weight-light:            300;
+  --font-weight-normal:           400;
+  --font-weight-bold:             700;
+}
+
