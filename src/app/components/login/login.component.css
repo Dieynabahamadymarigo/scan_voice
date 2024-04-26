@@ -30,7 +30,7 @@
   padding-bottom: 30px;
 }
 .image-login img{
-  height: 550px;
+  height: 450px;
   /* width: 330px; */
 }
 .image-login {
@@ -65,9 +65,10 @@
 }
 .input input{
   border-radius: var(--border-radius-large);
-  padding: 8px;
+  padding: 4px 8px;
   width: 100%;
   border: 2px solid var(--secondary-color);
+  outline: none;
 }
 .input input:hover{
   border: 2px solid var(--secondary-color);
@@ -75,7 +76,7 @@
 }
 .button-inscrire{
   display: flex;
-  padding: 30px;
+  padding:10px 0px;
   /* border: 2px solid black; */
 }
 .inscrire{
@@ -87,7 +88,7 @@
   background-color: var(--white-color);
   color: var(--secondary-color);
   font-weight: var(--font-weight-bold);
-  padding: 4px 20px;
+  padding: 2px 20px;
   border-radius:var(--border-radius-large);
   box-shadow: 4px 4px 2px 0px var(--secondary-color);
   font-size: var(--btn-font-size);
@@ -98,20 +99,20 @@
 }
 .text-inscrire{
   display: grid;
-  padding: 10px;
+  /* padding: 10px; */
   /* border: 2px solid black; */
 }
 .text-question{
   margin:0 auto;
   font-weight: var(--font-weight-bold);
-  font-size: var(--h6-font-size);
+  font-size: var(--p-font-size);
   /* border: 2px solid black; */
 }
 .text-connect{
   margin:0 auto;
   color: var(--secondary-color);
   font-weight: var(--font-weight-bold);
-  font-size: var(--h6-font-size);
+  font-size: var(--p-font-size);
   margin-top: -25px;
   cursor: pointer;
   /* border: 2px solid black; */
