@@ -81,6 +81,23 @@
   background-color: var(--white-color);
   color: var(--secondary-color);
 }
+.modal-annuler{
+  border-top: 3px solid var(--secondary-color);
+  border-left: 3px solid var(--secondary-color);
+  border-right: none;
+  border-bottom: none;
+  font-weight: var(--font-weight-bold);
+  padding: 2px 15px;
+  border-radius:var(--border-radius-large);
+  font-size: var(--btn-font-size);
+  background-color: var(--secondary-color);
+  color: var(--white-color);
+  box-shadow: 3px 3px 2px 0px var(--secondary-color);
+}
+.modal-annuler:hover{
+  background-color: var(--white-color);
+  color: var(--secondary-color);
+}
 
  /*tablette*/
  @media screen and (max-width: 991px){

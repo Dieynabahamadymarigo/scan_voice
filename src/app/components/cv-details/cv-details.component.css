@@ -77,14 +77,8 @@
   margin-top: -10px;
   /* border: 1px solid black; */
 }
-.button-inscrire{
-  display: flex;
-  /* width: 90%; */
-  padding:10px;
-  /* border: 2px solid black; */
-}
 .enregistrer{
-  margin:0 auto;
+  /* margin:0 auto; */
   border-top: 3px solid var(--secondary-color);
   border-left: 3px solid var(--secondary-color);
   border-right: none;
