@@ -1,0 +1,14 @@
+.icon{
+  display: flex;
+  /* border: 2px solid black; */
+  padding: 3px 20px;
+}
+.icon i{
+  color: var(--secondary-color);
+  font-size: var(--h3-font-size);
+  cursor: pointer;
+
+}
+.icon i:hover{
+  color: var(--primary-color);
+}

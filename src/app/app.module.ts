@@ -10,6 +10,8 @@ import { ScanComponent } from './components/scan/scan.component';
 import { CvComponent } from './components/cv/cv.component';
 import { BootstrapComponent } from './bootstrap/bootstrap.component';
 import { FormsModule } from '@angular/forms';
+import { MotivationComponent } from './components/motivation/motivation.component';
+import { CvDetailsComponent } from './components/cv-details/cv-details.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { FormsModule } from '@angular/forms';
     VoiceComponent,
     ScanComponent,
     CvComponent,
-    BootstrapComponent
+    BootstrapComponent,
+    MotivationComponent,
+    CvDetailsComponent
   ],
   imports: [
     BrowserModule,
