@@ -59,6 +59,9 @@
   cursor: pointer;
     /* border: 2px solid black; */
 }
+/* .input{
+  border: 2px solid black;
+} */
 .input p:hover{
   color: var(--secondary-color);
   font-weight: var(--font-weight-bold);
@@ -74,6 +77,30 @@
   border: 2px solid var(--secondary-color);
   box-shadow: 3px 3px 2px var(--secondary-color);
 }
+
+.input-true{
+  border-radius: var(--border-radius-large);
+  padding: 4px 8px;
+  width: 100%;
+  border: 2px solid var(--secondary-color);
+  outline: none;
+}
+.input-true:hover{
+  border: 2px solid var(--secondary-color);
+  box-shadow: 3px 3px 2px var(--secondary-color);
+}
+.input-false{
+  border-radius: var(--border-radius-large);
+  padding: 4px 8px;
+  width: 100%;
+  border: 2px solid red ;
+  outline: none;
+}
+.input-false:hover{
+  border: 2px solid red ;
+  box-shadow: 3px 3px 2px red ;
+}
+
 .button-inscrire{
   display: flex;
   padding:10px 0px;
