@@ -1,0 +1,21 @@
+<div>
+    <button (click)="toggleRecognition()">
+      {{ isListening ? 'Arrêter la reconnaissance vocale' : 'Démarrer la reconnaissance vocale' }}
+    </button>
+  </div>
+  
+  <div>
+    <h3>Texte reconnu :</h3>
+    <!-- Input pour afficher le texte reconnu -->
+    <input type="text" [(ngModel)]="inputText">
+    <!-- <button (click)="sendToTextarea()">Envoyer vers Textarea</button> -->
+  </div>
+  
+  <div>
+    <h3>Textarea :</h3>
+    <!-- Textarea pour afficher le texte complet reconnu -->
+    <textarea rows="10" cols="50">{{ fullTranscript }}</textarea>
+  </div>
+  
+<!--  -->
+  <!--  -->
