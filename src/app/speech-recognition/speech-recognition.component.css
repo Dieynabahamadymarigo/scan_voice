@@ -1,0 +1,35 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 105fr 1fr; /* Trois colonnes de largeur respective */
+  gap: 5px;
+  align-items: center;
+}
+
+.col-print {
+  display: flex;
+  background-color: var(--secondary-color);
+  justify-content: center;
+  color: white;
+  margin-top: -106px;
+  border-radius: 5px;
+
+
+ 
+}
+
+.col-textarea {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.col-mic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.large-textarea {
+  resize: none; /* Empêche le redimensionnement du textarea */
+  width: 100%;
+}

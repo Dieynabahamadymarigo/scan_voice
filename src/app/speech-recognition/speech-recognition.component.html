@@ -1,21 +1,40 @@
-<div>
-    <button (click)="toggleRecognition()">
-      {{ isListening ? 'Arrêter la reconnaissance vocale' : 'Démarrer la reconnaissance vocale' }}
-    </button>
+<div class="container">
+  <br>
+
+  <!-- Message d'alerte affiché conditionnellement -->
+  <div *ngIf="message" class="row justify-content-center mt-2">
+    <div class="col-sm-6">
+      <div class="alert" [ngClass]="{'alert-success': alertType === 'success', 'alert-danger': alertType === 'danger'}">
+        {{ message }}
+      </div>
+    </div>
   </div>
-  
-  <div>
-    <h3>Texte reconnu :</h3>
-    <!-- Input pour afficher le texte reconnu -->
-    <input type="text" [(ngModel)]="inputText">
-    <!-- <button (click)="sendToTextarea()">Envoyer vers Textarea</button> -->
+
+  <div class="grid-container mt-3">
+    <!-- Colonne 1 : Icône d'impression -->
+    <div class="col-print">
+      <button (click)="printText()" class="btn btn-link" *ngIf="isListening">
+        <i class="bi bi-printer"style="color:white"></i> <!-- Icône d'impression -->
+      </button>
+    </div>
+    
+    <!-- Colonne 2 : Textarea -->
+    <div class="col-textarea text-left p-5">
+      <h1 class="display-4" *ngIf="!isListening" style="color: #5F6368;">Parlez maintenant</h1>
+      <div *ngIf="isListening">
+        <textarea #textareaRef class="form-control large-textarea" rows="10"></textarea>
+      </div>
+    </div>
+    
+    <!-- Colonne 3 : Icône du microphone -->
+    <div class="col-mic text-right">
+      <i class="bi bi-mic-fill"
+         [style.color]="isListening ? 'red' : '#5F6368'"
+         style="font-size: 200px; cursor: pointer;"
+         (click)="toggleRecognition()">
+      </i>
+    </div>
   </div>
-  
-  <div>
-    <h3>Textarea :</h3>
-    <!-- Textarea pour afficher le texte complet reconnu -->
-    <textarea rows="10" cols="50">{{ fullTranscript }}</textarea>
-  </div>
-  
-<!--  -->
-  <!--  -->
+</div>
+
+

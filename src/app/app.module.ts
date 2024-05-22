@@ -1,4 +1,4 @@
-import { NgModule,CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA,   } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +12,7 @@ import { MotivationComponent } from './components/motivation/motivation.componen
 import { CvDetailsComponent } from './components/cv-details/cv-details.component';
 import { SpeechRecognitionComponent } from './speech-recognition/speech-recognition.component';
 import { CommonModule } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -27,9 +28,14 @@ import { CommonModule } from '@angular/common';
    
   ],
   imports: [
+ 
+    
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    CommonModule
+   
+    
  
   ],
   providers: [],
