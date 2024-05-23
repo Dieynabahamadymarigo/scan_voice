@@ -1,4 +1,8 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Document, Paragraph, Packer, TextRun, IRunOptions } from 'docx';
+import { saveAs } from 'file-saver';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-speech-recognition',
@@ -11,9 +15,10 @@ export class SpeechRecognitionComponent {
   message: string = ''; // Variable pour stocker le message d'état
   alertType: string = ''; // Variable pour stocker le type d'alerte (success, danger, etc.)
   noSoundTimeout: any; // Timeout ID pour détecter l'absence de son
+  documentTitle: string = ''; // Propriété pour stocker le titre du document
   
   @ViewChild('textareaRef') textareaRef!: ElementRef; // Référence à l'élément textarea dans le template
- 
+
   constructor() {
     // Initialisation de l'objet de reconnaissance vocale
     this.recognition = new ((window as any).webkitSpeechRecognition)();
@@ -46,7 +51,7 @@ export class SpeechRecognitionComponent {
       this.recognition.start(); // Démarrer l'écoute
       this.isListening = true;
       this.noSoundTimeout = setTimeout(() => {
- if (this.isListening) {
+        if (this.isListening) {
           this.showMessage('Aucun son détecté après le démarrage.', 'danger'); // Afficher le message "Aucun son détecté après le démarrage."
           this.recognition.stop(); // Arrêter l'écoute
           this.isListening = false;
@@ -115,4 +120,56 @@ export class SpeechRecognitionComponent {
     }
   }
 
+  // Méthode pour sauvegarder en format Word
+  saveAsWord(): void {
+    const textToPrint = this.textareaRef.nativeElement.value;
+    if (textToPrint.trim() !== '') {
+      const doc = new Document({
+        sections: [{
+          properties: {},
+          children: [
+            new Paragraph({
+              children: textToPrint.split('\n').map((line: string | IRunOptions) => new TextRun(line))
+            })
+          ]
+        }]
+      });
+
+      Packer.toBlob(doc).then(blob => {
+        saveAs(blob, 'document.docx');
+      });
+    }
+  }
+
+  // Méthode pour sauvegarder en format PDF
+  saveAsPDF(): void {
+    const textToPrint = this.textareaRef.nativeElement.value;
+    if (textToPrint.trim() !== '') {
+      const pdf = new jsPDF();
+      pdf.text(textToPrint, 10, 10);
+      pdf.save('document.pdf');
+    }
+  }
+
+  // Méthode pour sauvegarder en format PNG ou JPEG
+  saveAsImage(format: 'png' | 'jpeg'): void {
+    const textToPrint = this.textareaRef.nativeElement.value;
+    if (textToPrint.trim() !== '') {
+      const tempDiv = document.createElement('div');
+      tempDiv.style.whiteSpace = 'pre-wrap';
+      tempDiv.style.position = 'absolute';
+      tempDiv.style.left = '-9999px';
+      tempDiv.innerText = textToPrint;
+      document.body.appendChild(tempDiv);
+
+      html2canvas(tempDiv).then(canvas => {
+        canvas.toBlob(blob => {
+          if (blob) {
+            saveAs(blob, `document.${format}`);
+          }
+          document.body.removeChild(tempDiv);
+        }, `image/${format}`);
+      });
+    }
+  }
 }

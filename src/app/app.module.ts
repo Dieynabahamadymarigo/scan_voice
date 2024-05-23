@@ -7,11 +7,13 @@ import { HomeComponent } from './components/home/home.component';
 import { ScanComponent } from './components/scan/scan.component';
 import { CvComponent } from './components/cv/cv.component';
 import { BootstrapComponent } from './bootstrap/bootstrap.component';
-import { FormsModule } from '@angular/forms';
 import { MotivationComponent } from './components/motivation/motivation.component';
 import { CvDetailsComponent } from './components/cv-details/cv-details.component';
 import { SpeechRecognitionComponent } from './speech-recognition/speech-recognition.component';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+// Ajouter ces lignes
 
 
 @NgModule({
@@ -29,10 +31,10 @@ import { CommonModule } from '@angular/common';
   ],
   imports: [
  
-    
+    FormsModule, // Ajoutez FormsModule dans les imports
+
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
     CommonModule
    
     

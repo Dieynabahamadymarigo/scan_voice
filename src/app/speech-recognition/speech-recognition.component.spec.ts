@@ -6,6 +6,18 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
   styleUrls: ['./speech-recognition.component.css']
 })
 export class SpeechRecognitionComponent {
+documentTitle: any;
+
+
+saveAsWord() {
+throw new Error('Method not implemented.');
+}
+saveAsImage(arg0: string) {
+throw new Error('Method not implemented.');
+}
+saveAsPDF() {
+throw new Error('Method not implemented.');
+}
 getClassForAlert() {
 throw new Error('Method not implemented.');
 }
