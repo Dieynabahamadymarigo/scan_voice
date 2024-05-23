@@ -1,36 +1,47 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA,   } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
-import { VoiceComponent } from './components/voice/voice.component';
 import { ScanComponent } from './components/scan/scan.component';
 import { CvComponent } from './components/cv/cv.component';
 import { BootstrapComponent } from './bootstrap/bootstrap.component';
-import { FormsModule } from '@angular/forms';
 import { MotivationComponent } from './components/motivation/motivation.component';
 import { CvDetailsComponent } from './components/cv-details/cv-details.component';
+import { SpeechRecognitionComponent } from './speech-recognition/speech-recognition.component';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+// Ajouter ces lignes
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    VoiceComponent,
     ScanComponent,
     CvComponent,
     BootstrapComponent,
     MotivationComponent,
-    CvDetailsComponent
+    CvDetailsComponent,
+    SpeechRecognitionComponent
+   
   ],
   imports: [
+ 
+    FormsModule, // Ajoutez FormsModule dans les imports
+
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    CommonModule
+   
+    
+ 
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
