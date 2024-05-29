@@ -12,6 +12,7 @@ import { CvDetailsComponent } from './components/cv-details/cv-details.component
 import { SpeechRecognitionComponent } from './speech-recognition/speech-recognition.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 // Ajouter ces lignes
 
@@ -26,22 +27,17 @@ import { FormsModule } from '@angular/forms';
     BootstrapComponent,
     MotivationComponent,
     CvDetailsComponent,
-    SpeechRecognitionComponent
-   
+    SpeechRecognitionComponent,
   ],
   imports: [
- 
-    FormsModule, // Ajoutez FormsModule dans les imports
-
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
-    CommonModule
-   
-    
- 
+    CommonModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule {}
