@@ -1,216 +1,221 @@
 <!--Sign up-->
-  <div class="card mb-3  container" *ngIf="inscripton">
-    <div class="border-top"></div>
-    <form action="" (ngSubmit)="signUpFonction()">
+<div class="card mb-3  container" *ngIf="inscripton">
+  <div class="border-top"></div>
+  <form (ngSubmit)="signUpFonction()">
     <div class="row g-0 carte-connexion">
 
       <h2 class="text-inscription">Bienvenue sur notre Page d’Inscription</h2>
 
-
-        <div class="col-md-7">
-          <div class="card-body">
-            <div class="champs-input">
-              <div class="champs-de-saisir">
-                <h5 class="card-title">Nom :</h5>
-              </div>
-              <div class="input">
-                <input type="text" placeholder="votre nom" name="nom" [(ngModel)]="nom"  (input)="verifNomFonction()" required class="input-true">
-                <!-- <input type="text" placeholder="votre nom" *ngIf="exactNom === true" class="input-false"> -->
-                <p class="text-danger ms-1" *ngIf="exactNom == false">{{verifNom}}</p>
-                <p class="text-success ms-0" *ngIf="exactNom == true"><i class="bi bi-check2-all"></i></p>
-
-              </div>
+      <div class="col-md-7">
+        <div class="card-body">
+          <div class="champs-input">
+            <div class="champs-de-saisir">
+              <h5 class="card-title">Nom :</h5>
             </div>
+            <div class="input">
+              <input type="text" placeholder="votre nom" name="nom" [(ngModel)]="nom" (input)="verifNomFonction()"
+                required class="input-true">
+              <!-- <input type="text" placeholder="votre nom" *ngIf="exactNom === true" class="input-false"> -->
+              <p class="text-danger ms-1" *ngIf="exactNom == false">{{verifNom}}</p>
+              <p class="text-success ms-0" *ngIf="exactNom == true"><i class="bi bi-check2-all"></i></p>
 
-            <div class="champs-input">
-              <div class="champs-de-saisir">
-                <h5 class="card-title">Prenom :</h5>
-              </div>
-              <div class="input">
-                <input type="text" placeholder="votre prenom" name="prenom" [(ngModel)]="prenom" (input)="verifPreomFonction()" required>
-                <p class="text-danger ms-1" *ngIf="exactPrenom == false">{{verifPrenom}}</p>
-                <p class="text-success ms-0" *ngIf="exactPrenom == true"><i class="bi bi-check2-all"></i></p>
-              </div>
             </div>
-
-            <div class="champs-input">
-              <div class="champs-de-saisir">
-                <h5 class="card-title">Email :</h5>
-              </div>
-              <div class="input">
-                <input type="email" placeholder="exemple@gmail.com" name="email" [(ngModel)]="email" (input)="verifEmailFonction()" required>
-                <p class="text-danger ms-1" *ngIf="exactEmail == false">{{verifEmail}}</p>
-                <p class="text-success ms-0" *ngIf="exactEmail == true"><i class="bi bi-check2-all"></i></p>
-              </div>
-            </div>
-
-            <div class="champs-input">
-              <div class="champs-de-saisir">
-                <h5 class="card-title">Password :</h5>
-              </div>
-              <div class="input">
-                <input type="password" placeholder="**********" name="password" [(ngModel)]="password" (input)="verifPasswordFonction()" required>
-                <p class="text-danger ms-1" *ngIf="exactPassword == false">{{verifPassword}}</p>
-                <p class="text-success ms-0" *ngIf="exactPassword == true"><i class="bi bi-check2-all"></i></p>
-              </div>
-            </div>
-
-            <div class="champs-input">
-              <div class="champs-de-saisir">
-                <h5 class="card-title">Téléphone :</h5>
-              </div>
-              <div class="input">
-                <input type="tel" placeholder="7* *** ** **" name="telephone" [(ngModel)]="telephone" (input)="verifTelephoneFonction()" required>
-                <p class="text-danger ms-1" *ngIf="exactTelephone == false">{{verifTelephone}}</p>
-                <p class="text-success ms-0" *ngIf="exactTelephone == true"><i class="bi bi-check2-all"></i></p>
-              </div>
-            </div>
-
-            <div class="champs-input">
-              <div class="champs-de-saisir">
-                <h5 class="card-title">Adresse :</h5>
-              </div>
-              <div class="input">
-                <input type="text" placeholder="votre adresse" name="address" [(ngModel)]="address" (input)="verifAdresseFonction()" required>
-                <p class="text-danger ms-1" *ngIf="exactAdresse == false">{{verifAdresse}}</p>
-                <p class="text-success ms-0" *ngIf="exactAdresse == true"><i class="bi bi-check2-all"></i></p>
-              </div>
-            </div>
-
-            <div class="button-inscrire">
-              <button class="inscrire" *ngIf="exactNom == true && exactPrenom == true && exactEmail == true &&  exactPassword == true && exactAdresse == true && exactTelephone == true" >S'inscrire</button>
-
-              <button class="inscrire" *ngIf="exactNom == false || exactPrenom == false || exactEmail == false ||  exactPassword == false || exactAdresse == false || exactTelephone == false" disabled>S'inscrire</button>
-            </div>
-
-            <div class="text-inscrire">
-              <p class="text-question">Vous avez déjà un compte ?</p> <br>
-              <h5 class="text-connect" (click)="afficherFrmConnexion()">Connectez-vous</h5>
-            </div>
-
           </div>
+
+          <div class="champs-input">
+            <div class="champs-de-saisir">
+              <h5 class="card-title">Prenom :</h5>
+            </div>
+            <div class="input">
+              <input type="text" placeholder="votre prenom" name="prenom" [(ngModel)]="prenom"
+                (input)="verifPreomFonction()" required>
+              <p class="text-danger ms-1" *ngIf="exactPrenom == false">{{verifPrenom}}</p>
+              <p class="text-success ms-0" *ngIf="exactPrenom == true"><i class="bi bi-check2-all"></i></p>
+            </div>
+          </div>
+
+          <div class="champs-input">
+            <div class="champs-de-saisir">
+              <h5 class="card-title">Email :</h5>
+            </div>
+            <div class="input">
+              <input type="email" placeholder="exemple@gmail.com" name="email" [(ngModel)]="email"
+                (input)="verifEmailFonction()" required>
+              <p class="text-danger ms-1" *ngIf="exactEmail == false">{{verifEmail}}</p>
+              <p class="text-success ms-0" *ngIf="exactEmail == true"><i class="bi bi-check2-all"></i></p>
+            </div>
+          </div>
+
+          <div class="champs-input">
+            <div class="champs-de-saisir">
+              <h5 class="card-title">Password :</h5>
+            </div>
+            <div class="input">
+              <input type="password" placeholder="**********" name="password" [(ngModel)]="password"
+                (input)="verifPasswordFonction()" required>
+              <p class="text-danger ms-1" *ngIf="exactPassword == false">{{verifPassword}}</p>
+              <p class="text-success ms-0" *ngIf="exactPassword == true"><i class="bi bi-check2-all"></i></p>
+            </div>
+          </div>
+
+          <div class="champs-input">
+            <div class="champs-de-saisir">
+              <h5 class="card-title">Téléphone :</h5>
+            </div>
+            <div class="input">
+              <input type="tel" placeholder="7* *** ** **" name="telephone" [(ngModel)]="telephone"
+                (input)="verifTelephoneFonction()" required>
+              <p class="text-danger ms-1" *ngIf="exactTelephone == false">{{verifTelephone}}</p>
+              <p class="text-success ms-0" *ngIf="exactTelephone == true"><i class="bi bi-check2-all"></i></p>
+            </div>
+          </div>
+
+          <div class="champs-input">
+            <div class="champs-de-saisir">
+              <h5 class="card-title">Adresse :</h5>
+            </div>
+            <div class="input">
+              <input type="text" placeholder="votre adresse" name="address" [(ngModel)]="address"
+                (input)="verifAdresseFonction()" required>
+              <p class="text-danger ms-1" *ngIf="exactAdresse == false">{{verifAdresse}}</p>
+              <p class="text-success ms-0" *ngIf="exactAdresse == true"><i class="bi bi-check2-all"></i></p>
+            </div>
+          </div>
+
+          <div class="button-inscrire">
+            <button class="inscrire"
+              *ngIf="exactNom == true && exactPrenom == true && exactEmail == true &&  exactPassword == true && exactAdresse == true && exactTelephone == true">S'inscrire</button>
+
+            <button class="inscrire"
+              *ngIf="exactNom == false || exactPrenom == false || exactEmail == false ||  exactPassword == false || exactAdresse == false || exactTelephone == false"
+              disabled>S'inscrire</button>
+          </div>
+
+          <div class="text-inscrire">
+            <p class="text-question">Vous avez déjà un compte ?</p> <br>
+            <h5 class="text-connect" (click)="afficherFrmConnexion()">Connectez-vous</h5>
+          </div>
+
         </div>
-
-
-        <div class="col-md-5 image-login">
-          <img src="../../../assets/images/login.png" class="img-fluid " alt="...">
-        </div>
-
       </div>
-    </form>
-  </div>
+
+
+      <div class="col-md-5 image-login">
+        <img src="../../../assets/images/login.png" class="img-fluid " alt="...">
+      </div>
+
+    </div>
+  </form>
+</div>
 
 <!-- login -->
 <div class="card mb-3  container" *ngIf="connexion">
   <div class="border-top"></div>
-  <div class="row g-0 carte-connexion">
+  <form (ngSubmit)="login()">
+    <div class="row g-0 carte-connexion">
 
-    <h2 class="text-inscription">Bienvenue sur notre Page de Connexion</h2>
+      <h2 class="text-inscription">Bienvenue sur notre Page de Connexion</h2>
 
-    <!-- <div class="col-md-5 image-login">
-      <img src="../../../assets/images/login.png" class="img-fluid " alt="...">
-    </div> -->
+      <div class="col-md-7">
+        <div class="card-body">
 
-    <div class="col-md-7" >
-      <div class="card-body">
+          <div class="espace"></div>
 
-        <div class="espace"></div>
-
-        <div class="champs-input">
-          <div class="champs-de-saisir">
-            <h5 class="card-title">Email :</h5>
+          <div class="champs-input">
+            <div class="champs-de-saisir">
+              <h5 class="card-title">Email :</h5>
+            </div>
+            <div class="input">
+              <input type="email" placeholder="exemple@gmail.com" name="emailCon" [(ngModel)]="emailCon"
+                (input)="verifEmailConFonction()" required>
+              <p class="text-danger ms-1" *ngIf="exactEmailCon == false">{{verifEmailCon}}</p>
+              <p class="text-success ms-0" *ngIf="exactEmailCon == true"><i class="bi bi-check2-all"></i></p>
+            </div>
           </div>
-          <div class="input">
-            <input type="email" placeholder="exemple@gmail.com" name="emailCon" [(ngModel)]="emailCon" (input)="verifEmailConFonction()" required>
-            <p class="text-danger ms-1" *ngIf="exactEmailCon == false">{{verifEmailCon}}</p>
-            <p class="text-success ms-0" *ngIf="exactEmailCon == true"><i class="bi bi-check2-all"></i></p>
-          </div>
-        </div>
 
-        <div class="champs-input">
-          <div class="champs-de-saisir">
-            <h5 class="card-title">Password :</h5>
+          <div class="champs-input">
+            <div class="champs-de-saisir">
+              <h5 class="card-title">Password :</h5>
+            </div>
+            <div class="input">
+              <input type="password" placeholder="**********" name="passwordCon" [(ngModel)]="passwordCon"
+                (input)="verifPasswordConFonction()" required>
+              <p class="text-danger ms-1" *ngIf="exactPasswordCon == false">{{verifPasswordCon}}</p>
+              <p class="text-success ms-0" *ngIf="exactPasswordCon == true"><i class="bi bi-check2-all"></i></p>
+              <p (click)="afficherFrmForgot()">Mot de passe oublié ?</p>
+            </div>
           </div>
-          <div class="input">
-            <input type="password" placeholder="**********" name="passwordCon" [(ngModel)]="passwordCon" (input)="verifPasswordConFonction()" required>
-            <p class="text-danger ms-1" *ngIf="exactPasswordCon == false">{{verifPasswordCon}}</p>
-            <p class="text-success ms-0" *ngIf="exactPasswordCon == true"><i class="bi bi-check2-all"></i></p>
-            <p (click)="afficherFrmForgot()">Mot de passe oublié ?</p>
+
+          <div class="button-inscrire">
+            <button class="inscrire" type="submit" *ngIf="exactEmailCon == true && exactPasswordCon == true">Se
+              connecter</button>
+            <button class="inscrire" type="submit" *ngIf="exactEmailCon == false || exactPasswordCon == false"
+              disabled>Se connecter</button>
           </div>
-        </div>
 
-        <div class="button-inscrire">
-          <button class="inscrire" type="submit" routerLink="/home" *ngIf="exactEmailCon == true && exactPasswordCon == true">Se connecter</button>
-          <button class="inscrire" type="submit" routerLink="/home" *ngIf="exactEmailCon == false || exactPasswordCon == false" disabled>Se connecter</button>
-        </div>
+          <div class="text-inscrire">
+            <p class="text-question">Vous n'avez pas de un compte ?</p> <br>
+            <h5 class="text-connect" (click)="afficherFrmInscription()">Inscrivez-vous</h5>
+          </div>
 
-        <div class="text-inscrire">
-          <p class="text-question">Vous n'avez pas de un compte ?</p> <br>
-          <h5 class="text-connect" (click)="afficherFrmInscription()">Inscrivez-vous</h5>
         </div>
 
       </div>
 
-    </div>
+      <div class="col-md-5 image-login">
+        <img src="../../../assets/images/login.png" class="img-fluid " alt="...">
+      </div>
 
-    <div class="col-md-5 image-login">
-      <img src="../../../assets/images/login.png" class="img-fluid " alt="...">
     </div>
-
-  </div>
+  </form>
 </div>
 
 <!-- fotgot password -->
 <div class="card mb-3  container" *ngIf="forgot_password">
   <div class="border-top"></div>
-  <div class="row g-0 carte-connexion">
+  <form (ngSubmit)="forgotPasswordFonction()">
+    <div class="row g-0 carte-connexion">
 
-    <h2 class="text-inscription">Mot de passe oublié !</h2>
+      <h2 class="text-inscription">Mot de passe oublié !</h2>
 
-    <!-- <div class="col-md-5 image-login">
-      <img src="../../../assets/images/login.png" class="img-fluid " alt="...">
-    </div> -->
+      <div class="col-md-7">
+        <div class="card-body">
 
-    <div class="col-md-7" >
-      <div class="card-body">
+          <div class="espace"></div>
 
-        <div class="espace"></div>
-
-        <div class="champs-input">
-          <div class="champs-de-saisir">
-            <h5 class="card-title">Email :</h5>
+          <div class="champs-input">
+            <div class="champs-de-saisir">
+              <h5 class="card-title">Email :</h5>
+            </div>
+            <div class="input">
+              <input type="email" placeholder="exemple@gmail.com" name="emailCon" [(ngModel)]="emailCon"
+                (input)="verifEmailConFonction()" required>
+            </div>
           </div>
-          <div class="input">
-            <input type="email" placeholder="exemple@gmail.com">
+
+          <div class="champs-input">
+            <div class="champs-de-saisir">
+              <h5 class="card-title">Password :</h5>
+            </div>
+            <div class="input">
+              <input type="password" placeholder="**********" name="passwordCon" [(ngModel)]="passwordCon"
+                (input)="verifPasswordConFonction()" required>
+              <p (click)="afficherFrmConnexion()">Connexion</p>
+            </div>
           </div>
+
+          <div class="button-inscrire">
+            <button class="inscrire" type="submit">Valider</button>
+          </div>
+
         </div>
-
-        <div class="champs-input">
-          <div class="champs-de-saisir">
-            <h5 class="card-title">Password :</h5>
-          </div>
-          <div class="input">
-            <input type="password" placeholder="**********">
-            <p (click)="afficherFrmConnexion()">Connexion</p>
-          </div>
-        </div>
-
-        <div class="button-inscrire">
-          <button class="inscrire">Valider</button>
-        </div>
-
-        <!-- <div class="text-inscrire">
-          <p class="text-question">Vous n'avez pas de un compte ?</p> <br>
-          <h5 class="text-connect" (click)="afficherFrmForgot()">Inscrivez-vous</h5>
-        </div> -->
 
       </div>
 
-    </div>
+      <div class="col-md-5 image-login">
+        <img src="../../../assets/images/Forgot.png" class="img-fluid " alt="...">
+      </div>
 
-    <div class="col-md-5 image-login">
-      <img src="../../../assets/images/Forgot.png" class="img-fluid " alt="...">
     </div>
-
-  </div>
+  </form>
 </div>
