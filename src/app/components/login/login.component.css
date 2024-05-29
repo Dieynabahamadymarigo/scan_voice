@@ -45,7 +45,7 @@
   display: grid;
   grid-template-columns: auto auto;
   gap: 10px;
-  padding: 10px;
+  padding: 5px;
   /* border: 2px solid black; */
   /* text-decoration: underline; */
 }
@@ -239,7 +239,7 @@
   }
   .champs-input{
     display: grid;
-    grid-template-columns: auto ;
+    grid-template-columns: auto  ;
     /* gap: 10px; */
     /* padding: 10px; */
     /* border: 2px solid black; */
