@@ -190,10 +190,11 @@
             <div class="input">
               <input type="email" placeholder="exemple@gmail.com" name="emailCon" [(ngModel)]="emailCon"
                 (input)="verifEmailConFonction()" required>
+                <p (click)="afficherFrmConnexion()">Connexion</p>
             </div>
           </div>
 
-          <div class="champs-input">
+          <!-- <div class="champs-input">
             <div class="champs-de-saisir">
               <h5 class="card-title">Password :</h5>
             </div>
@@ -202,7 +203,7 @@
                 (input)="verifPasswordConFonction()" required>
               <p (click)="afficherFrmConnexion()">Connexion</p>
             </div>
-          </div>
+          </div> -->
 
           <div class="button-inscrire">
             <button class="inscrire" type="submit">Valider</button>

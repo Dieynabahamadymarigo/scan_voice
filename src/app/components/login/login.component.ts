@@ -315,7 +315,12 @@ export class LoginComponent implements OnInit {
         .subscribe((rep: any) => {
           console.log('forgot Password', rep);
           // localStorage.setItem('userConnect', rep.token);
-          alert(rep.message);
+          // alert(rep.message);
+           this.verification(
+             '',
+             'Vous allez recevoir un email ',
+             'success'
+           );
           // this.router.navigate(['/home']);
           this.viderChamps();
         });
