@@ -1,0 +1,35 @@
+.icon{
+  display: flex;
+  /* border: 2px solid black; */
+  padding: 3px 20px;
+}
+.icon i{
+  color: var(--secondary-color);
+  font-size: var(--h3-font-size);
+  cursor: pointer;
+
+}
+.icon i:hover{
+  color: var(--primary-color);
+}
+.voice{
+  display: flex;
+  border: 2px solid black;
+  padding: 3px 20px;
+  /* justify-content: flex-end; */
+  justify-content: space-around;
+  align-items: center;
+  /* padding-top: 100px; */
+}
+.voice i{
+  color: rgba(0, 0, 0, 0.377);
+  font-size: 125px;
+  cursor: pointer;
+  /* border: 2px solid black; */
+}
+.voice h3{
+  color: rgba(0, 0, 0, 0.377);
+  font-size: var(--h2-font-size);
+  /* cursor: pointer; */
+  /* border: 2px solid black; */
+}
