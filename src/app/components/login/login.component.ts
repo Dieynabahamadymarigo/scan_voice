@@ -273,7 +273,8 @@ export class LoginComponent implements OnInit {
             );
           } else {
             console.log('login', rep);
-            localStorage.setItem('userConnect', rep.token);
+            localStorage.setItem('userToken', rep.token);
+            localStorage.setItem('userConnect', JSON.stringify(rep.user));
             // alert(rep.message);
             this.router.navigate(['/home']);
             this.viderChamps();
@@ -313,9 +314,7 @@ export class LoginComponent implements OnInit {
       this.connectez
         .forgotPassword({ email: email, password: password })
         .subscribe((rep: any) => {
-          console.log('forgot Password', rep);
-          // localStorage.setItem('userConnect', rep.token);
-          // alert(rep.message);
+          console.log('forgot Password', rep),
            this.verification(
              '',
              'Vous allez recevoir un email ',
