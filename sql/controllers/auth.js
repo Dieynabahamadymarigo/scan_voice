@@ -31,23 +31,44 @@ const db = mysql.createConnection({
 // Route pour traiter l'inscription
 exports.register = (req , res) => {
   const { nom, prenom, email, password, telephone, address } = req.body;
-      const hashedPassword = bcrypt.hashSync(password, 8);  // Hachage du mot de passe
-  const sql = 'INSERT INTO users SET ?';
-  const newUser = { nom:nom, prenom:prenom, email:email, password:hashedPassword, tel:telephone, adresse:address};
-  db.query(sql, newUser, (err, result) => {
-      if (err) {
-            console.error('Error inserting user:', err);
-            res.status(500).json({ error: 'Database error' });
-        } else {
-            console.log('User added:', newUser);
-            res.status(200).json({
-                message: 'User added successfully',
-                user: newUser,
-                result: result
-            });
-          }
 
-});
+     // Vérifiez si l'email existe déjà
+    const checkEmailSql = 'SELECT * FROM users WHERE email = ?';
+    db.query(checkEmailSql, [email], (err, results) => {
+      if (err) {
+          console.error('Error checking email:', err);
+          return res.status(500).json({ error: 'Database error' });
+      }
+
+      if (results.length > 0) {
+          // Si l'email existe déjà
+            res.json({
+                status: false,
+                message: 'Email existe déjà',
+              });
+              return;
+          // return res.status(400).json({
+          //     error: 'Email already exists',
+          //      message: 'Email existe deja',
+          // });
+      }
+      const hashedPassword = bcrypt.hashSync(password, 8);  // Hachage du mot de passe
+      const sql = 'INSERT INTO users SET ?';
+      const newUser = { nom:nom, prenom:prenom, email:email, password:hashedPassword, tel:telephone, adresse:address};
+      db.query(sql, newUser, (err, result) => {
+          if (err) {
+                console.error('Error inserting user:', err);
+                res.status(500).json({ error: 'Database error' });
+            } else {
+                console.log('User added:', newUser);
+                res.status(200).json({
+                    message: 'User added successfully',
+                    user: newUser,
+                    result: result
+                });
+              }
+      });
+    });
 
 }
 
