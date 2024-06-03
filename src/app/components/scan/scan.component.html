@@ -1,20 +1,17 @@
-<button class="btn menu-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
-  aria-controls="offcanvasExample">
+<button class="btn menu-icon" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
   <i class="bi bi-list"></i>
 </button>
 
 <div class="offcanvas offcanvas-start menu" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header">
-    <h1 class="offcanvas-title menu-titre" id="offcanvasExampleLabel"><i class="bi bi-arrow-left-circle-fill me-3"
-        routerLink="/home"></i>Scanneur</h1>
+    <h1 class="offcanvas-title menu-titre" id="offcanvasExampleLabel"><i class="bi bi-arrow-left-circle-fill me-3" routerLink="/home"></i>Scanneur</h1>
     <button type="button" class="btn btn-light btn-close " data-bs-dismiss="offcanvas" aria-label="Close">
       <!-- <i class="bi bi-x-lg"></i> -->
     </button>
   </div>
   <div class="offcanvas-body">
     <div>
-      <h3 class="nav-link menu-texte mb-3" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#scan"
-        onclick="imprimerFonction()"><i class="bi bi-printer mx-3"></i>Scan</h3>
+      <h3 class="nav-link menu-texte mb-3" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#scan" onclick="imprimerFonction()"><i class="bi bi-printer mx-3"></i>Scan</h3>
     </div>
     <div>
       <h3 class="nav-link menu-texte  mb-3" href="#"><i class="bi bi-file-earmark-text mx-3"></i>Type de fichier</h3>
@@ -36,19 +33,19 @@
 </div>
 
 <div class="text-input container">
-  <!-- <input type="file"> -->
+        <!-- <input type="file"> -->
   <!-- <textarea name="" id="" cols="0" rows="20"> -->
-  <input type="file" (change)="onFileSelected($event)" />
-  <!-- <button (click)="onUpload()">Upload and Analyze</button> -->
+        <input type="file" (change)="onFileSelected($event)" />
+        <!-- <button (click)="onUpload()">Upload and Analyze</button> -->
 
-  <div *ngIf="ocrResult">
-    <h6> Result:</h6>
-    <pre>{{ ocrResult }}</pre>
-  </div>
+        <div *ngIf="ocrResult">
+          <h6> Result:</h6>
+          <pre>{{ ocrResult }}</pre>
+        </div>
 
-  <div *ngIf="error" class="error">
-    <p>{{ error }}</p>
-  </div>
+        <div *ngIf="error" class="error">
+          <p>{{ error }}</p>
+        </div>
   <!-- </textarea> -->
 </div>
 
@@ -82,6 +79,29 @@
           <button (click)="print()">Print</button>
         </div>
 
+
+
+        <!-- <ul>
+          <li *ngFor="let printer of printers">{{ printer.name }}</li>
+        </ul> -->
+
+          <!-- <li *ngFor="let printer of printers">
+            {{ printer.label }}
+          </li> -->
+          <!-- <h1>OCR Image Upload</h1> -->
+          <!-- <button (click)="onUpload()">Upload and Analyze</button> -->
+          <!-- <input type="file" (change)="onFileSelected($event)" />
+
+          <div *ngIf="ocrResult">
+            <h2>OCR Result:</h2>
+            <pre>{{ ocrResult }}</pre>
+          </div>
+
+          <div *ngIf="error" class="error">
+            <p>{{ error }}</p>
+          </div> -->
+
+          <!-- <div *ngIf="printers.length === 0 && !error">Aucun périphérique disponible.</div> -->
       </div>
       <div class="modal-footer">
         <button type="button" class="btn modal-annuler" data-bs-dismiss="modal">Annuler</button>

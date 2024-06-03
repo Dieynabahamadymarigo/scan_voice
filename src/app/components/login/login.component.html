@@ -1,10 +1,15 @@
 <!--Sign up-->
 <div class="card mb-3  container" *ngIf="inscripton">
   <div class="border-top"></div>
-  <form (ngSubmit)="signUpFonction()">
+  <!-- <form action="/auth/register" method="post" (ngSubmit)="signUpFonction()">  -->
+  <form (ngSubmit)="signUpFonction()" >
     <div class="row g-0 carte-connexion">
 
       <h2 class="text-inscription">Bienvenue sur notre Page d’Inscription</h2>
+
+      <!-- <div class="col-md-5 image-login">
+        <img src="../../../assets/images/login.png" class="img-fluid " alt="...">
+      </div> -->
 
       <div class="col-md-7">
         <div class="card-body">
@@ -84,7 +89,7 @@
 
           <div class="button-inscrire">
             <button class="inscrire"
-              *ngIf="exactNom == true && exactPrenom == true && exactEmail == true &&  exactPassword == true && exactAdresse == true && exactTelephone == true">S'inscrire</button>
+              *ngIf="exactNom == true && exactPrenom == true && exactEmail == true &&  exactPassword == true && exactAdresse == true && exactTelephone == true" >S'inscrire</button>
 
             <button class="inscrire"
               *ngIf="exactNom == false || exactPrenom == false || exactEmail == false ||  exactPassword == false || exactAdresse == false || exactTelephone == false"
@@ -112,61 +117,63 @@
 <div class="card mb-3  container" *ngIf="connexion">
   <div class="border-top"></div>
   <form (ngSubmit)="login()">
-    <div class="row g-0 carte-connexion">
+  <div class="row g-0 carte-connexion">
 
-      <h2 class="text-inscription">Bienvenue sur notre Page de Connexion</h2>
+    <h2 class="text-inscription">Bienvenue sur notre Page de Connexion</h2>
 
-      <div class="col-md-7">
-        <div class="card-body">
+    <!-- <div class="col-md-5 image-login">
+      <img src="../../../assets/images/login.png" class="img-fluid " alt="...">
+    </div> -->
 
-          <div class="espace"></div>
+    <div class="col-md-7">
+      <div class="card-body">
 
-          <div class="champs-input">
-            <div class="champs-de-saisir">
-              <h5 class="card-title">Email :</h5>
-            </div>
-            <div class="input">
-              <input type="email" placeholder="exemple@gmail.com" name="emailCon" [(ngModel)]="emailCon"
-                (input)="verifEmailConFonction()" required>
-              <p class="text-danger ms-1" *ngIf="exactEmailCon == false">{{verifEmailCon}}</p>
-              <p class="text-success ms-0" *ngIf="exactEmailCon == true"><i class="bi bi-check2-all"></i></p>
-            </div>
+        <div class="espace"></div>
+
+        <div class="champs-input">
+          <div class="champs-de-saisir">
+            <h5 class="card-title">Email :</h5>
           </div>
-
-          <div class="champs-input">
-            <div class="champs-de-saisir">
-              <h5 class="card-title">Password :</h5>
-            </div>
-            <div class="input">
-              <input type="password" placeholder="**********" name="passwordCon" [(ngModel)]="passwordCon"
-                (input)="verifPasswordConFonction()" required>
-              <p class="text-danger ms-1" *ngIf="exactPasswordCon == false">{{verifPasswordCon}}</p>
-              <p class="text-success ms-0" *ngIf="exactPasswordCon == true"><i class="bi bi-check2-all"></i></p>
-              <p (click)="afficherFrmForgot()">Mot de passe oublié ?</p>
-            </div>
+          <div class="input">
+            <input type="email" placeholder="exemple@gmail.com" name="emailCon" [(ngModel)]="emailCon"
+              (input)="verifEmailConFonction()" required>
+            <p class="text-danger ms-1" *ngIf="exactEmailCon == false">{{verifEmailCon}}</p>
+            <p class="text-success ms-0" *ngIf="exactEmailCon == true"><i class="bi bi-check2-all"></i></p>
           </div>
+        </div>
 
-          <div class="button-inscrire">
-            <button class="inscrire" type="submit" *ngIf="exactEmailCon == true && exactPasswordCon == true">Se
-              connecter</button>
-            <button class="inscrire" type="submit" *ngIf="exactEmailCon == false || exactPasswordCon == false"
-              disabled>Se connecter</button>
+        <div class="champs-input">
+          <div class="champs-de-saisir">
+            <h5 class="card-title">Password :</h5>
           </div>
-
-          <div class="text-inscrire">
-            <p class="text-question">Vous n'avez pas de un compte ?</p> <br>
-            <h5 class="text-connect" (click)="afficherFrmInscription()">Inscrivez-vous</h5>
+          <div class="input">
+            <input type="password" placeholder="**********" name="passwordCon" [(ngModel)]="passwordCon"
+              (input)="verifPasswordConFonction()" required>
+            <p class="text-danger ms-1" *ngIf="exactPasswordCon == false">{{verifPasswordCon}}</p>
+            <p class="text-success ms-0" *ngIf="exactPasswordCon == true"><i class="bi bi-check2-all"></i></p>
+            <p (click)="afficherFrmForgot()">Mot de passe oublié ?</p>
           </div>
+        </div>
 
+        <div class="button-inscrire">
+          <button class="inscrire" type="submit" *ngIf="exactEmailCon == true && exactPasswordCon == true">Se connecter</button>
+          <button class="inscrire" type="submit" *ngIf="exactEmailCon == false || exactPasswordCon == false" disabled>Se connecter</button>
+        </div>
+
+        <div class="text-inscrire">
+          <p class="text-question">Vous n'avez pas de un compte ?</p> <br>
+          <h5 class="text-connect" (click)="afficherFrmInscription()">Inscrivez-vous</h5>
         </div>
 
       </div>
 
-      <div class="col-md-5 image-login">
-        <img src="../../../assets/images/login.png" class="img-fluid " alt="...">
-      </div>
-
     </div>
+
+    <div class="col-md-5 image-login">
+      <img src="../../../assets/images/login.png" class="img-fluid " alt="...">
+    </div>
+
+  </div>
   </form>
 </div>
 
@@ -174,49 +181,57 @@
 <div class="card mb-3  container" *ngIf="forgot_password">
   <div class="border-top"></div>
   <form (ngSubmit)="forgotPasswordFonction()">
-    <div class="row g-0 carte-connexion">
+  <div class="row g-0 carte-connexion">
 
-      <h2 class="text-inscription">Mot de passe oublié !</h2>
+    <h2 class="text-inscription">Mot de passe oublié !</h2>
 
-      <div class="col-md-7">
-        <div class="card-body">
+    <!-- <div class="col-md-5 image-login">
+      <img src="../../../assets/images/login.png" class="img-fluid " alt="...">
+    </div> -->
 
-          <div class="espace"></div>
+    <div class="col-md-7">
+      <div class="card-body">
 
-          <div class="champs-input">
-            <div class="champs-de-saisir">
-              <h5 class="card-title">Email :</h5>
-            </div>
-            <div class="input">
-              <input type="email" placeholder="exemple@gmail.com" name="emailCon" [(ngModel)]="emailCon"
-                (input)="verifEmailConFonction()" required>
-                <p (click)="afficherFrmConnexion()">Connexion</p>
-            </div>
+        <div class="espace"></div>
+
+        <div class="champs-input">
+          <div class="champs-de-saisir">
+            <h5 class="card-title">Email :</h5>
           </div>
-
-          <!-- <div class="champs-input">
-            <div class="champs-de-saisir">
-              <h5 class="card-title">Password :</h5>
-            </div>
-            <div class="input">
-              <input type="password" placeholder="**********" name="passwordCon" [(ngModel)]="passwordCon"
-                (input)="verifPasswordConFonction()" required>
+          <div class="input">
+            <input type="email" placeholder="exemple@gmail.com"  name="emailCon" [(ngModel)]="emailCon"
+              (input)="verifEmailConFonction()" required>
               <p (click)="afficherFrmConnexion()">Connexion</p>
-            </div>
-          </div> -->
-
-          <div class="button-inscrire">
-            <button class="inscrire" type="submit">Valider</button>
           </div>
-
         </div>
 
-      </div>
+        <!-- <div class="champs-input">
+          <div class="champs-de-saisir">
+            <h5 class="card-title">Password :</h5>
+          </div>
+          <div class="input">
+            <input type="password" placeholder="**********" name="passwordCon" [(ngModel)]="passwordCon"
+              (input)="verifPasswordConFonction()" required >
+          </div>
+        </div> -->
 
-      <div class="col-md-5 image-login">
-        <img src="../../../assets/images/Forgot.png" class="img-fluid " alt="...">
+        <div class="button-inscrire">
+          <button class="inscrire" type="submit">Valider</button>
+        </div>
+
+        <!-- <div class="text-inscrire">
+          <p class="text-question">Vous n'avez pas de un compte ?</p> <br>
+          <h5 class="text-connect" (click)="afficherFrmForgot()">Inscrivez-vous</h5>
+        </div> -->
+
       </div>
 
     </div>
+
+    <div class="col-md-5 image-login">
+      <img src="../../../assets/images/Forgot.png" class="img-fluid " alt="...">
+    </div>
+
+  </div>
   </form>
 </div>

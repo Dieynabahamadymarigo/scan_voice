@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+// import { scan } from 'rxjs';
 import { ScanService } from '../../services/scan.service';
 import { NgxPrintModule } from 'ngx-print';
 import printJS from 'print-js';
+// import { JSPrintManager } from 'jsprintmanager';
+// import { JSPM } from 'jsprintmanager';
 import * as JSPM from 'jsprintmanager';
+
+
 
 @Component({
   selector: 'app-scan',
@@ -15,7 +20,10 @@ export class ScanComponent implements OnInit {
   printers: any = [];
 
   ngOnInit(): void {
+    // this.dispoScan();
+    // this.ajout();
     this.listeOcr();
+    // this.imprimerFonction();
 
     JSPM.JSPrintManager.auto_reconnect = true;
     JSPM.JSPrintManager.start();
@@ -74,9 +82,12 @@ export class ScanComponent implements OnInit {
     if (this.selectedFile) {
       this.scan.parseImage(this.selectedFile).subscribe(
         (response) => {
+          // if (response.ParsedResults && response.ParsedResults.length > 0) {
           this.ocrResult = response.ParsedResults[0].ParsedText;
           console.log('ocr', this.ocrResult);
-
+          // } else {
+          //   this.error = 'Erreur .';
+          // }
         },
         (error) => {
           this.error =
@@ -88,6 +99,19 @@ export class ScanComponent implements OnInit {
       this.error = 'Please selectionner un fichier.';
     }
   }
+
+  // printer: any[] = [];
+  // imprimerFonction(): void {
+  //   this.scan.getPrinters().subscribe(
+  //     (rep) => {
+  //       this.printer = rep;
+  //       console.log('imprimante', rep);
+  //     },
+  //     (error) => {
+  //       console.error('Error lors du recherche:', error);
+  //     }
+  //   );
+  // }
 
   file: any[] = [];
   listeOcr(): void {

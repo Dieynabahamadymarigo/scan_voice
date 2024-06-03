@@ -26,3 +26,12 @@
   --font-weight-bold:             700;
 }
 
+@media print {
+
+  /* All your print styles go here */
+  #header,
+  #footer,
+  #nav {
+    display: none !important;
+  }
+}

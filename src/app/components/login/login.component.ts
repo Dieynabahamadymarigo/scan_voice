@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ScanService } from '../../services/scan.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { ScanService } from '../../services/scan.service';
 
 @Component({
   selector: 'app-login',
@@ -29,6 +29,10 @@ export class LoginComponent implements OnInit {
     this.inscripton = false;
     this.forgot_password = true;
   }
+
+  ngOnInit(): void {}
+
+  constructor(private router: Router, private connectez: ScanService) {}
 
   // les variables
   nom: string = '';
@@ -63,10 +67,6 @@ export class LoginComponent implements OnInit {
 
   exactEmailCon: boolean = false;
   exactPasswordCon: boolean = false;
-
-  ngOnInit(): void {}
-
-  constructor(private router: Router, private connectez: ScanService) {}
 
   // Verification du nom
   verifNomFonction() {
@@ -273,7 +273,9 @@ export class LoginComponent implements OnInit {
             );
           } else {
             console.log('login', rep);
-            localStorage.setItem('userConnect', rep.token);
+            localStorage.setItem('userToken', rep.token);
+            // localStorage.setItem('userConnect', rep.user);
+            localStorage.setItem('userConnect', JSON.stringify(rep.user));
             // alert(rep.message);
             this.router.navigate(['/home']);
             this.viderChamps();
@@ -295,9 +297,20 @@ export class LoginComponent implements OnInit {
     console.log('users', users);
 
     this.connectez.signUp(users).subscribe((rep) => {
-      console.log('felicitation', rep);
+       if (rep.status == false) {
+         console.log('email existe déjà', rep.message);
+         // alert(rep.message);
+         this.verification(
+           'Erreur de validation',
+           'Email existe déjà dans notre plateforme',
+           'error'
+         );
+       } else {
+         console.log('felicitation', rep);
+         this.router.navigate(['/login']);
+         this.viderChamps();
+       }
     });
-    this.viderChamps();
   }
 
   // Methode pour réinitialiser le mot de passe
@@ -313,16 +326,13 @@ export class LoginComponent implements OnInit {
       this.connectez
         .forgotPassword({ email: email, password: password })
         .subscribe((rep: any) => {
-          console.log('forgot Password', rep);
-          // localStorage.setItem('userConnect', rep.token);
-          // alert(rep.message);
-           this.verification(
-             '',
-             'Vous allez recevoir un email ',
-             'success'
-           );
-          // this.router.navigate(['/home']);
-          this.viderChamps();
+
+            console.log('forgot Password', rep);
+            // localStorage.setItem('userConnect', rep.token);
+            alert(rep.message);
+            // this.router.navigate(['/home']);
+            this.viderChamps();
+
         });
     }
   }
@@ -359,7 +369,7 @@ export class LoginComponent implements OnInit {
   }
 
   // sweet alert
-  verification(title: any, text: any, icon: any) {
+  verification(title:any, text:any, icon:any){
     Swal.fire({
       title: title,
       text: text,
