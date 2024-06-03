@@ -1,0 +1,54 @@
+<div class="container">
+  <br>
+
+  <!-- Message d'alerte affiché conditionnellement -->
+  <div *ngIf="message" class="row justify-content-center mt-2">
+    <div class="col-sm-6">
+      <div class="alert" [class.alert-success]="alertType === 'success'" [class.alert-danger]="alertType === 'danger'">
+        {{ message }}
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-container mt-3">
+    <!-- Colonne 1 : Icône d'impression et boutons superposés -->
+    <div class="col-print d-flex flex-column align-items-center">
+      <!-- Bouton d'impression -->
+      <button (click)="printText()" class="btn mb-2" style="margin-bottom: 10px;" *ngIf="isListening">
+        <p style="color:white; font-size: 25px; padding-top: 4px;">Imprimer</p> <!-- Icône d'impression -->
+      </button>
+
+      <!-- Bouton "Enregistrer Sous" -->
+      <div class="dropdown top-2 start-0" *ngIf="isListening">
+        <button class="btn dropdown-toggle" style="margin-bottom: 10px;font-size: 25px;" type="button"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          Enregistrer Sous...
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" (click)="saveAsWord()">Word</a></li>
+          <li><a class="dropdown-item" (click)="saveAsPDF()">PDF</a></li>
+          <li><a class="dropdown-item" (click)="saveAsImage('png')">PNG</a></li>
+          <li><a class="dropdown-item" (click)="saveAsImage('jpeg')">JPEG</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Colonne 2 : Textarea -->
+    <div class="col-textarea text-left p-5">
+      <h1 class="display-4" *ngIf="!isListening" style="color: #5F6368; margin-right: 145px;">Parlez maintenant</h1>
+      <div *ngIf="isListening">
+        <!-- Champ de saisie du titre -->
+
+
+        <textarea #textareaRef class="form-control large-textarea" rows="10"></textarea>
+      </div>
+    </div>
+
+    <!-- Colonne 3 : Icône du microphone -->
+    <div class="col-mic text-right">
+      <i class="bi bi-mic-fill" [style.color]="isListening ? 'red' : '#5F6368'"
+        style="font-size: 200px; cursor: pointer;" (click)="toggleRecognition()">
+      </i>
+    </div>
+  </div>
+</div>

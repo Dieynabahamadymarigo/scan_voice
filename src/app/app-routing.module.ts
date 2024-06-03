@@ -8,6 +8,7 @@ import { CvComponent } from './components/cv/cv.component';
 import { MotivationComponent } from './components/motivation/motivation.component';
 import { CvDetailsComponent } from './components/cv-details/cv-details.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { SpeechRecognitionComponent } from './components/speech-recognition/speech-recognition.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'edit', component: MotivationComponent },
   { path: 'edit-cv', component: CvDetailsComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
+  { path: 'speech', component: SpeechRecognitionComponent },
 ];
 
 @NgModule({
