@@ -297,9 +297,20 @@ export class LoginComponent implements OnInit {
     console.log('users', users);
 
     this.connectez.signUp(users).subscribe((rep) => {
-      console.log('felicitation', rep);
+       if (rep.status == false) {
+         console.log('email existe déjà', rep.message);
+         // alert(rep.message);
+         this.verification(
+           'Erreur de validation',
+           'Email existe déjà dans notre plateforme',
+           'error'
+         );
+       } else {
+         console.log('felicitation', rep);
+         this.router.navigate(['/login']);
+         this.viderChamps();
+       }
     });
-    this.viderChamps();
   }
 
   // Methode pour réinitialiser le mot de passe
