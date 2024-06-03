@@ -15,6 +15,7 @@ import { BootstrapComponent } from './bootstrap/bootstrap.component';
 import { MotivationComponent } from './components/motivation/motivation.component';
 import { CvDetailsComponent } from './components/cv-details/cv-details.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { SpeechRecognitionComponent } from './components/speech-recognition/speech-recognition.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     MotivationComponent,
     CvDetailsComponent,
     ResetPasswordComponent,
+    SpeechRecognitionComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
