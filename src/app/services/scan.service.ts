@@ -23,6 +23,14 @@ export class ScanService {
     return this.http.post('http://localhost:3000/auth/forgotPassword', users);
   }
 
+  //réinitialiser le nouveau mot de passe
+  // resetPassword(users: any): Observable<any> {
+  //   return this.http.post('http://localhost:3000/auth/resetPassword', users);
+  // }
+  resetPassword(users: { token: string; password: string }) {
+    return this.http.post('http://localhost:3000/auth/resetPassword', users);
+  }
+
   // OCR list
   private apiKey = '7d6393ed5688957';
   ocrImageGet(): Observable<any> {
