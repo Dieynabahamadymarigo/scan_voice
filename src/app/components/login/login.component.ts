@@ -30,7 +30,9 @@ export class LoginComponent implements OnInit {
     this.forgot_password = true;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.user();
+  }
 
   constructor(private router: Router, private connectez: ScanService) {}
 
@@ -251,6 +253,8 @@ export class LoginComponent implements OnInit {
   }
 
   // Methode pour se connecter
+  user: any = [];
+
   login(): void {
     if (this.validateEmail(this.emailCon)) {
       // Effectuer la connexion
@@ -274,9 +278,11 @@ export class LoginComponent implements OnInit {
           } else {
             console.log('login', rep);
             localStorage.setItem('userToken', rep.token);
-            // localStorage.setItem('userConnect', rep.user);
             localStorage.setItem('userConnect', JSON.stringify(rep.user));
-            // alert(rep.message);
+            this.user = rep.user;
+            if (this.user && this.user.nom) {
+              // alert(`Bienvenue ${this.user.prenom}  ${this.user.nom}!`);
+            }
             this.router.navigate(['/home']);
             this.viderChamps();
           }
@@ -297,19 +303,19 @@ export class LoginComponent implements OnInit {
     console.log('users', users);
 
     this.connectez.signUp(users).subscribe((rep) => {
-       if (rep.status == false) {
-         console.log('email existe déjà', rep.message);
-         // alert(rep.message);
-         this.verification(
-           'Erreur de validation',
-           'Email existe déjà dans notre plateforme',
-           'error'
-         );
-       } else {
-         console.log('felicitation', rep);
-         this.router.navigate(['/login']);
-         this.viderChamps();
-       }
+      if (rep.status == false) {
+        console.log('email existe déjà', rep.message);
+        // alert(rep.message);
+        this.verification(
+          'Erreur de validation',
+          'Email existe déjà dans notre plateforme',
+          'error'
+        );
+      } else {
+        console.log('felicitation', rep);
+        this.router.navigate(['/login']);
+        this.viderChamps();
+      }
     });
   }
 
@@ -326,13 +332,16 @@ export class LoginComponent implements OnInit {
       this.connectez
         .forgotPassword({ email: email, password: password })
         .subscribe((rep: any) => {
-
-            console.log('forgot Password', rep);
-            // localStorage.setItem('userConnect', rep.token);
-            alert(rep.message);
-            // this.router.navigate(['/home']);
-            this.viderChamps();
-
+          console.log('forgot Password', rep);
+          // localStorage.setItem('userConnect', rep.token);
+          // alert(rep.message);
+          this.verification(
+            'Un email vous y ai envoyé',
+            "Veuilez vérifier votre boite d'email",
+            'success'
+          );
+          // this.router.navigate(['/home']);
+          this.viderChamps();
         });
     }
   }
@@ -369,7 +378,7 @@ export class LoginComponent implements OnInit {
   }
 
   // sweet alert
-  verification(title:any, text:any, icon:any){
+  verification(title: any, text: any, icon: any) {
     Swal.fire({
       title: title,
       text: text,

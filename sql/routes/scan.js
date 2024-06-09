@@ -2,7 +2,6 @@ const express = require('express');
 const scanController = require('../controllers/scan');
 
 const router = express.Router();
-
-router.get('/scan', scanController.scan)
+router.post('/sendMessage', scanController.sendMessage)
 
 module.exports = router;

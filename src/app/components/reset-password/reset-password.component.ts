@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ScanService } from '../../services/scan.service';
 
@@ -22,18 +22,11 @@ export class ResetPasswordComponent implements OnInit {
 
   token: string = '';
 
-  constructor(private route: ActivatedRoute, private connectez: ScanService) {}
+  constructor(private route: ActivatedRoute,private router:Router , private connectez: ScanService) {}
 
   ngOnInit(): void {
     // this.reinitialierFonction();
   }
-  // reinitialierFonction() {
-  //   this.route.queryParams.subscribe((params) => {
-  //     this.token = params['token'];
-  //     // Vous pouvez maintenant utiliser ce token pour vérifier l'utilisateur et permettre la réinitialisation du mot de passe
-  //     console.log(this.token);
-  //   });
-  // }
 
   // Fonction de Verification de l'email pour la fonctionnalité connexion
   validateEmail(email: string): boolean {
@@ -81,26 +74,25 @@ export class ResetPasswordComponent implements OnInit {
 
   // Methode pour réinitialiser le mot de passe
   resetPasswordFonction(): void {
-    // if (this.validateEmail(this.emailCon)) {
-    //   // Effectuer la connexion
       let token = this.token;
       let password = this.passwordCon;
 
-    //   this.verifPasswordConFonction();
-    //   this.verifEmailConFonction();
-
         this.route.queryParams.subscribe((params) => {
           token = params['token'];
-          // Vous pouvez maintenant utiliser ce token pour vérifier l'utilisateur et permettre la réinitialisation du mot de passe
+
           console.log(this.token);
-        // });
 
       this.connectez.resetPassword({ token: token, password: password })
         .subscribe((rep: any) => {
           console.log('reset Password', rep);
+             this.verification(
+               'Félicitation',
+               "Vous avez réinisaliser votre mot de passe",
+               'success'
+             );
           // localStorage.setItem('userConnect', rep.token);
-          alert(rep.message);
-          // this.router.navigate(['/home']);
+          // alert(rep.message);
+          this.router.navigate(['/home']);
           this.viderChamps();
         });
         });
