@@ -17,6 +17,8 @@ import { CvDetailsComponent } from './components/cv-details/cv-details.component
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { SpeechRecognitionComponent } from './components/speech-recognition/speech-recognition.component';
 
+import { NotFoundComponent } from './components/not-found/not-found.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +32,7 @@ import { SpeechRecognitionComponent } from './components/speech-recognition/spee
     CvDetailsComponent,
     ResetPasswordComponent,
     SpeechRecognitionComponent,
+    NotFoundComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

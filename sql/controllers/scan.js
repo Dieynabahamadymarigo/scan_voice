@@ -1,7 +1,13 @@
+const express = require ('express');
 const mysql = require ('mysql');
-const printer = require('node-printer');
+const http = require('http');
+const socketIo = require('socket.io');
 
-// const printer = require('printer');
+
+
+const app = express ();
+
+app.use(express.json());
 
 
 const db = mysql.createConnection({
@@ -11,24 +17,26 @@ const db = mysql.createConnection({
     database:process.env.DATABASE
 })
 
-// getPrinters
-exports.scan = (req , res) => {
-    try {
-        const printers = printer.list();
-        console.log('list:', printers);
+exports.sendMessage = (req , res) => {
 
-        if (printers.length === 0) {
-            return res.status(404).json({ message: 'imprimante introuvable.' });
-        }
+  // io.on('connection', (socket) => {
+  //   console.log('Nouvelle connexion WebSocket établie:', socket.id);
+  // })
+  const message = req.body.message;
+  console.log('Reçu message',message)
 
-        res.json(printers);
-    } catch (error) {
-        console.error('Unexpected error:', error);
-        res.status(500).json({ error: 'Unexpected error: ' + error.message });
+   if (!message) {
+        return res.status(400).json({ error: 'Message is required' });
     }
-    res.send({message:'Scan loading ....'});
+
+  // Émettre un événement à tous les clients
+  io.emit('chat message', message);
+  // res.status(200).send(
+    //   message='Message envoyé à tous les clients');
+    res.json({
+      status: 200,
+      message: 'Message envoyé à tous les clients',
+    });
+
 }
-
-
-
 

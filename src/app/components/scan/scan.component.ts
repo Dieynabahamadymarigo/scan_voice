@@ -1,13 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-// import { scan } from 'rxjs';
 import { ScanService } from '../../services/scan.service';
-import { NgxPrintModule } from 'ngx-print';
 import printJS from 'print-js';
-// import { JSPrintManager } from 'jsprintmanager';
-// import { JSPM } from 'jsprintmanager';
 import * as JSPM from 'jsprintmanager';
-
-
 
 @Component({
   selector: 'app-scan',
@@ -15,16 +9,18 @@ import * as JSPM from 'jsprintmanager';
   styleUrl: './scan.component.css',
 })
 export class ScanComponent implements OnInit {
-  constructor(private scan: ScanService) {}
+  // constructor(private scan: ScanService) {}
+
+  constructor(
+    private scan: ScanService,
+  ) {}
+
+  scannerType: any = [];
 
   printers: any = [];
 
   ngOnInit(): void {
-    // this.dispoScan();
-    // this.ajout();
     this.listeOcr();
-    // this.imprimerFonction();
-
     JSPM.JSPrintManager.auto_reconnect = true;
     JSPM.JSPrintManager.start();
 
@@ -37,7 +33,7 @@ export class ScanComponent implements OnInit {
           JSPM.JSPrintManager.getPrinters()
             .then((printers) => {
               this.printers = printers;
-              console.log('Installed printers:', this.printers);
+              // console.log('Installed printers:', this.printers);
             })
             .catch((error) => {
               console.error('Error getting printers:', error);
@@ -50,7 +46,7 @@ export class ScanComponent implements OnInit {
   imprimante(): void {
     if (this.printers.length > 0) {
       const cpj = new JSPM.ClientPrintJob();
-      cpj.clientPrinter = new JSPM.InstalledPrinter(this.printers[0]); // Use the first printer in the list
+      cpj.clientPrinter = new JSPM.InstalledPrinter(this.printers); // Use the first printer in the list
       cpj
         .sendToClient()
         .then(() => {
@@ -113,11 +109,50 @@ export class ScanComponent implements OnInit {
   //   );
   // }
 
-  file: any[] = [];
+  file: any = [];
   listeOcr(): void {
     this.scan.ocrImageGet().subscribe((rep) => {
       this.file = rep;
       console.log('file', rep);
+    });
+  }
+
+  // last example
+  // onWebTwainReady(): void {
+  //   console.log('WebTwain is ready');
+  // }
+
+  // Dynamsoft: any = '';
+
+  // scanDocument(): void {
+  //   this.Dynamsoft.DWT.CreateDWTObject()
+  //     .then((dwtObject: any) => {
+  //       dwtObject
+  //         .SelectSourceAsync()
+  //         .then(() => {
+  //           dwtObject
+  //             .AcquireImageAsync()
+  //             .then(() => {
+  //               alert('Scan complete!');
+  //               dwtObject.CloseSourceAsync();
+  //             })
+  //             .catch((error: any) => {
+  //               console.error(error);
+  //             });
+  //         })
+  //         .catch((error: any) => {
+  //           console.error(error);
+  //         });
+  //     })
+  //     .catch((error: any) => {
+  //       console.error(error);
+  //     });
+  // }
+  imprimant: any = [];
+  scanner(): void {
+    this.scan.scanFonction().subscribe((rep) => {
+      this.imprimant = rep;
+      console.log('new scan', rep);
     });
   }
 }

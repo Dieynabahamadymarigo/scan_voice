@@ -11,7 +11,7 @@
   </div>
   <div class="offcanvas-body">
     <div>
-      <h3 class="nav-link menu-texte mb-3" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#scan" onclick="imprimerFonction()"><i class="bi bi-printer mx-3"></i>Scan</h3>
+      <button class="nav-link menu-texte mb-3" type="button" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#" ><i class="bi bi-printer mx-3"></i>Scan</button>
     </div>
     <div>
       <h3 class="nav-link menu-texte  mb-3" href="#"><i class="bi bi-file-earmark-text mx-3"></i>Type de fichier</h3>
@@ -33,26 +33,12 @@
 </div>
 
 <div class="text-input container">
-        <!-- <input type="file"> -->
-  <!-- <textarea name="" id="" cols="0" rows="20"> -->
-        <input type="file" (change)="onFileSelected($event)" />
-        <!-- <button (click)="onUpload()">Upload and Analyze</button> -->
-
-        <div *ngIf="ocrResult">
-          <h6> Result:</h6>
-          <pre>{{ ocrResult }}</pre>
-        </div>
-
-        <div *ngIf="error" class="error">
-          <p>{{ error }}</p>
-        </div>
-  <!-- </textarea> -->
+  <textarea name="" id="" cols="0" rows="20">
+  </textarea>
 </div>
 
 <div class="d-grid gap-2 d-md-flex justify-content-md-end container mt-3 mb-5">
-  <!-- <button class="btn enregistrer me-md-2" type="submit" onclick="ajout()">Enrégistrer</button> -->
-  <button class="btn enregistrer me-md-2" type="submit" onclick="listeOcr()">Enrégistrer</button>
-  <button (click)="onUpload()">Effectuer OCR</button>
+  <button class="btn enregistrer me-md-2" type="submit">  Enrégistrer</button>
   <button class="btn annuler" type="button" routerLink="/home">Annuler</button>
 </div>
 
@@ -72,12 +58,33 @@
         <div>
           <div id="print-section">
           </div>
-          <!-- <h1>Printer List</h1> -->
           <ul>
             <li *ngFor="let printer of printers">{{ printer }}</li>
           </ul>
           <button (click)="print()">Print</button>
         </div>
+
+      <!-- Affichage des résultats du scan -->
+      <!-- <div *ngIf="imprimant.length > 0"> -->
+      <div *ngIf="scannerType.length > 0">
+        <h2>Résultats du scan</h2>
+      <ul>
+        <!-- <li *ngFor="let device of imprimant"> -->
+        <li *ngFor="let device of scannerType">
+          {{ device.ip }}
+          <!-- {{ device.hostname }} -->
+          <!-- {{ device.vendor }} -->
+          <!-- {{ device.mac }}
+          {{ device.type }} -->
+        </li>
+      </ul>
+      </div>
+
+        <!-- <div>
+          <button (click)="scanDocument()">Scan Document</button>
+          <div id="dwtcontrolContainer"></div>
+        </div> -->
+
 
 
 
@@ -105,7 +112,9 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn modal-annuler" data-bs-dismiss="modal">Annuler</button>
-        <button type="button" class="btn btn-primary" (click)="onUpload()">Save changes</button>
+        <!-- <button type="button" class="btn btn-primary" (click)="onUpload()">Save changes</button> -->
+        <!-- <button type="button" class="btn btn-primary" (click)="sendMessage()">Save changes</button> -->
+        <!-- <button type="button" class="btn btn-primary" (click)="scanner()"> changes</button> -->
       </div>
     </div>
   </div>

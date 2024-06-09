@@ -64,8 +64,6 @@ app.use('/scan', require('./routes/scan'));
 app.use('/addscanner', require('./routes/addscanner'));
 
 
-
-
 app.get('/jwt', (req, res) => {
    const createTokenFromJson = (JsonData,options = {}) => {
     try{

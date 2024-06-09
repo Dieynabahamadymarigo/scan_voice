@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -8,9 +8,17 @@ import { Observable, of } from 'rxjs';
 export class ScanService {
   constructor(private http: HttpClient) {}
 
-  // inscription
   signUp(users: any): Observable<any> {
     return this.http.post('http://localhost:3000/auth/register', users);
+  }
+
+  // refresh token
+
+
+  // guards
+  isLoggedIn(): boolean {
+    // Remplacez cette logique par la vérification réelle de l'authentification
+    return !!localStorage.getItem('userToken');
   }
 
   // connexion
@@ -24,11 +32,12 @@ export class ScanService {
   }
 
   //réinitialiser le nouveau mot de passe
-  // resetPassword(users: any): Observable<any> {
-  //   return this.http.post('http://localhost:3000/auth/resetPassword', users);
-  // }
   resetPassword(users: { token: string; password: string }) {
     return this.http.post('http://localhost:3000/auth/resetPassword', users);
+  }
+
+  scanFonction() {
+    return this.http.get('http://localhost:3000/scan/scan');
   }
 
   // OCR list
