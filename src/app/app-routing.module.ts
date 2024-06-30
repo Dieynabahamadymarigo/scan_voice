@@ -15,19 +15,17 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'home', component: HomeComponent, canActivate: [GuardService] },
-  { path: 'voice', component: VoiceComponent, canActivate: [GuardService] },
-  { path: 'scan', component: ScanComponent, canActivate:[GuardService] },
-  { path: 'cv', component: CvComponent, canActivate:[GuardService] },
-  { path: 'edit', component: MotivationComponent, canActivate:[GuardService] },
-  { path: 'edit-cv', component: CvDetailsComponent, canActivate:[GuardService] },
+  { path: 'home', component: HomeComponent },
+  { path: 'voice', component: VoiceComponent },
+  { path: 'scan', component: ScanComponent },
+  { path: 'cv', component: CvComponent },
+  { path: 'edit', component: MotivationComponent },
+  { path: 'edit-cv', component: CvDetailsComponent },
   { path: 'reset-password', component: ResetPasswordComponent, },
   { path: '**', component: NotFoundComponent },
   {
-    path: 'speech',
-    component: SpeechRecognitionComponent,
-    canActivate: [GuardService],
-  },
+    path: 'speech', component: SpeechRecognitionComponent},
+  // { path: 'home', component: HomeComponent, canActivate: [GuardService] },
 ];
 
 @NgModule({
